@@ -1,0 +1,33 @@
+---
+module: spark
+dsl_version: 1.0.0
+description: Components for managing spark
+components:
+  master:
+     description: Component that creates a spark master
+     actions:
+       create:
+         puppet_class: spark::master
+
+  slave:
+    description: Component that creates a spark worker (for running in spark native mode)
+    attributes:
+      spark_master_host:
+        type: string
+        required: true
+    dependencies:
+    - spark::master
+    - spark::common
+    link_defs:
+      spark::master:
+        attribute_mappings:
+        - $node.host_address -> spark_master_host
+    actions:
+      create:
+        puppet_class: spark::slave
+
+  common:
+    private: true
+    actions:
+      create:
+        puppet_class: spark::common

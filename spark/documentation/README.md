@@ -1,7 +1,6 @@
 ## Component Module - spark
 
 **DTK DSL Version:** 1.0.0
-**Type:** 
 
 This is some content to go at the top of this example, lets put some content here...
 
@@ -10,20 +9,20 @@ This is some content to go at the top of this example, lets put some content her
 *   [slave]
 *   [common]
 
-### <%= cmp.name.capitalize %>
+### master
 
 #### Attributes  
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ------ |
 
-### <%= cmp.name.capitalize %>
+### slave
 
 #### Attributes  
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ------ |
 | spark_master_host | string |  | 
 
-### <%= cmp.name.capitalize %>
+### common
 
 #### Attributes  
 | Name | Type | Default | Description |

@@ -1,7 +1,6 @@
 ## Component Module - {{module.name}}
 
 **DTK DSL Version:** {{module.dsl_version}}
-**Type:** {{module.type}}
 
 This is some content to go at the top of this example, lets put some content here...
 
@@ -11,7 +10,7 @@ This is some content to go at the top of this example, lets put some content her
 {{/module.components}}
 
 {{#module.components}}
-### <%= cmp.name.capitalize %>
+### {{name}}
 
 #### Attributes  
 | Name | Type | Default | Description |

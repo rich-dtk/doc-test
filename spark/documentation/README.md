@@ -1,13 +1,13 @@
-## Component Module - spark
+## Component Module: spark
 
 **DTK DSL Version:** 1.0.0
 
 This is some content to go at the top of this example, lets put some content here...
 
 ## Components  
-*   [master]
-*   [slave]
-*   [common]
+*   master
+*   slave
+*   common
 
 ### master
 

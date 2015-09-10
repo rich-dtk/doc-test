@@ -1,4 +1,4 @@
-## Component Module - {{module.name}}
+## Component Module: {{module.name}}
 
 **DTK DSL Version:** {{module.dsl_version}}
 
@@ -6,7 +6,7 @@ This is some content to go at the top of this example, lets put some content her
 
 ## Components  
 {{#module.components}}
-*   [{{name}}]
+*   {{name}}
 {{/module.components}}
 
 {{#module.components}}

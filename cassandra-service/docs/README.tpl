@@ -1,4 +1,4 @@
-## Service Module - {{module.name}}
+## Service Module: {{module.name}}
 
 This is some content to go at the top of this example, lets put some content here...
 
@@ -12,7 +12,7 @@ This is some content to go at the top of this example, lets put some content her
 ## Workflows
 
 {{#module.assemblies}}
-### {{name}}
+### Assembly Template: {{name}}
 {{#workflows}}
 * {{name}}
 {{/workflows}}

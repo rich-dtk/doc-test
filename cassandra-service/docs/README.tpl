@@ -9,14 +9,18 @@ This is some content to go at the top of this example, lets put some content her
 | {{name}} | {{description}}
 {{/module.assemblies}}
 
+## Workflows
+
 {{#module.assemblies}}
 ### {{name}}
-
-#### Workflows
 {{#workflows}}
 * {{name}}
 {{/workflows}}
 
 {{/module.assemblies}}
 
+## Component Module References
 
+{{#module.component_module_refs}}
+* {{namespace}}:{{module_name}}
+{{/module.component_module_refs}}

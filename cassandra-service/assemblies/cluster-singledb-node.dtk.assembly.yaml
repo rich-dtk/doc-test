@@ -1,0 +1,205 @@
+---
+name: cluster-singledb-node
+description: Akka/spark cluster, single db node for cassandra, and mysql
+dsl_version: 1.0.0
+node_bindings:
+  master: amazon-medium
+  dynamic-workers: amazon-small
+  constant-workers: amazon-small
+  databases: amazon-medium
+assembly:
+  components:
+  - globals
+  - cassandra::cluster
+  - akka_cluster::akka_seeds
+  - gridx_app::dataset:
+      attributes:
+        name: SMUD
+      component_links:
+        cassandra::cluster: cassandra::cluster
+        mysql::server: databases/mysql::server
+
+  nodes:
+    databases: 
+      components:
+       - host::dtk_hostname
+       - cassandra::seed:
+           component_links:
+             cassandra::cluster: cassandra::cluster
+       - cassandra:
+           component_links:
+             cassandra::cluster: cassandra::cluster
+       - mysql::server
+       - gridx_mysql:
+           component_links:
+              mysql::server: databases/mysql::server
+       - gridx_cassandra:  
+            cassandra::cluster: cassandra::cluster
+
+    master:
+      components:
+      - hiera_bigtop:
+          component_links:
+            globals: globals
+      - bigtop_base
+      - spark::common:
+          component_links:
+            spark::master: master/spark::master
+      - spark::master
+      - spark::client
+
+      - gridx_app::akka_seed:
+          component_links:
+            akka_cluster::akka_seeds: akka_cluster::akka_seeds
+      - gridx_app::common:
+          component_links:
+            gridx_app::dataset: gridx_app::dataset
+            akka_cluster::akka_seeds: akka_cluster::akka_seeds
+            gridx_app::cluster_coordinator: master/gridx_app::cluster_coordinator
+      - gridx_app::cluster_coordinator
+      - gridx_app::master
+      - gridx_app::run_master
+
+
+    dynamic-workers:
+      attributes:
+        cardinality: 1
+        type: group
+      components:
+      - hiera_bigtop:
+          component_links:
+            globals: globals
+      - bigtop_base
+      - spark::common:
+          component_links:
+            spark::master: master/spark::master
+      - spark::worker
+
+      - gridx_app::common:
+          component_links:
+            gridx_app::dataset: gridx_app::dataset
+            akka_cluster::akka_seeds: akka_cluster::akka_seeds
+            gridx_app::cluster_coordinator: master/gridx_app::cluster_coordinator
+      - gridx_app::akka_actor[dynamic]
+      - gridx_app::run_akka_actor[dynamic]
+
+    constant-workers:
+      attributes:
+        cardinality: 1
+        type: group
+
+      components:
+      - hiera_bigtop:
+          component_links:
+            globals: globals
+      - bigtop_base
+      - spark::common:
+          component_links:
+            spark::master: master/spark::master
+      - spark::worker
+
+      - gridx_app::common:
+          component_links:
+            gridx_app::dataset: gridx_app::dataset
+            akka_cluster::akka_seeds: akka_cluster::akka_seeds
+            gridx_app::cluster_coordinator: master/gridx_app::cluster_coordinator
+      - gridx_app::akka_actor[constant]
+      - gridx_app::run_akka_actor[constant]
+
+workflows:
+  create-databases:
+    subtask_order: sequential
+    subtasks:
+    - name: general init
+      ordered_components:
+      - host::dtk_hostname
+
+    - name: announce cassandra seeds
+      components: 
+      - cassandra::seed
+    - name: aggregate cassandra seeds
+      components: 
+      - cassandra::cluster
+
+    - name: install mysql
+      ordered_components: 
+      - mysql::server
+    - name: install cassandra
+      ordered_components:
+      - cassandra
+
+  create-cluster:
+    subtask_order: sequential
+    subtasks:
+    - name: globals
+      ordered_components:
+      - globals
+    - name: hiera_bigtop
+      ordered_components:
+      - hiera_bigtop
+    - name: bigtop_base
+      ordered_components:
+      - bigtop_base
+    - name: spark master
+      node: master
+      components:
+      - spark::master
+    - name: spark workers and clients
+      ordered_components:
+      - spark::common
+      - spark::worker
+      - spark::client
+    - name: spark client smoketest
+      ordered_components:
+      - spark::client.smoke_test
+
+    - name: load gridx mysql schema
+      ordered_components: 
+      - gridx_mysql       
+    - name: load gridx cassandra schema
+      ordered_components:
+      - gridx_cassandra 
+
+    - name: announce akka seeds
+      components:
+      - gridx_app::akka_seed
+    - name: compute akka seeds
+      components:
+      - akka_cluster::akka_seeds
+    - name: gridx_app::dataset
+      components:
+      - gridx_app::dataset
+    - name: gridx common install and configure
+      components:
+      - gridx_app::common
+    - name: gridx  gridx master
+      components:
+      - gridx_app::master
+    - name: gridx akka actors
+      components:
+      - gridx_app::akka_actor[constant]
+      - gridx_app::akka_actor[dynamic]
+
+  start-gridx:
+    subtask_order: sequential
+    subtasks:
+    - name: start gridx master daemon
+      components:
+      - gridx_app::run_master
+    - name: start gridx constant daemons
+      components:
+      - gridx_app::run_akka_actor[constant]
+    - name: start gridx dynamic daemons
+      components:
+      - gridx_app::run_akka_actor[dynamic]
+
+  gridx-status:
+    subtask_order: sequential
+    subtasks:
+    - name: gridx-status
+      actions:
+      - gridx_app::common.status
+
+  create:
+    description: Just creates nodes
+

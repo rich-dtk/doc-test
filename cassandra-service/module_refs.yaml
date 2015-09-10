@@ -1,0 +1,26 @@
+---
+component_modules:
+  akka_cluster:
+    namespace: akka
+  bigtop_base:
+    namespace: bigtop
+  cassandra:
+    namespace: bigtop
+  globals:
+    namespace: gridx
+  gridx_app:
+    namespace: gridx
+  gridx_cassandra:
+    namespace: gridx
+  gridx_mysql:
+    namespace: gridx
+  hiera_bigtop:
+    namespace: gridx
+  host:
+    namespace: dtk
+  mysql:
+    namespace: puppetlabs
+  repo_manager:
+    namespace: gridx
+  spark:
+    namespace: gridx

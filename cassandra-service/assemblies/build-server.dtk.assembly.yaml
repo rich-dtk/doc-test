@@ -1,0 +1,21 @@
+---
+name: build-server
+description: build-server
+dsl_version: 1.0.0
+node_bindings:
+  build-server: amazon-small
+assembly:
+  nodes:
+    build-server:
+      components:
+      - repo_manager
+      - host::dtk_hostname
+workflows:
+  create:
+    subtask_order: sequential
+    subtasks:
+    - name: repo-manager
+      node: build-server
+      ordered_components:
+      - host::dtk_hostname
+      - repo_manager

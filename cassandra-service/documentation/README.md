@@ -11,27 +11,27 @@ This is some content to go at the top of this example, lets put some content her
 ## Workflows
 
 ### Assembly Template: build-server
-* __create_action
+* create
 
 ### Assembly Template: cluster-singledb-node
 * create-databases
 * create-cluster
 * start-gridx
 * gridx-status
-* __create_action
+* create
 
 
 ## Component Module References
 
-* gridx:gridx_mysql
-* gridx:hiera_bigtop
-* dtk:host
-* puppetlabs:mysql
-* gridx:repo_manager
-* gridx:spark
-* gridx:gridx_cassandra
 * akka:akka_cluster
-* bigtop:bigtop_base
 * bigtop:cassandra
-* gridx:globals
+* bigtop:bigtop_base
+* dtk:host
+* gridx:gridx_cassandra
+* gridx:spark
+* gridx:repo_manager
 * gridx:gridx_app
+* gridx:globals
+* gridx:hiera_bigtop
+* gridx:gridx_mysql
+* puppetlabs:mysql

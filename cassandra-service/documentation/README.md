@@ -1,4 +1,4 @@
-## Service Module - dtk2244
+## Service Module: dtk2244
 
 This is some content to go at the top of this example, lets put some content here...
 
@@ -10,10 +10,10 @@ This is some content to go at the top of this example, lets put some content her
 
 ## Workflows
 
-### build-server
+### Assembly Template: build-server
 * __create_action
 
-### cluster-singledb-node
+### Assembly Template: cluster-singledb-node
 * create-databases
 * create-cluster
 * start-gridx

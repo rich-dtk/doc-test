@@ -9,10 +9,10 @@ This is some content to go at the top of this example, lets put some content her
 *   {{name}}
 {{/module.components}}
 
+## Component Attributes
 {{#module.components}}
-### {{name}}
+### Component: {{name}}
 
-#### Attributes  
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ------ |
 {{#attributes}}

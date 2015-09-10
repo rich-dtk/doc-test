@@ -9,22 +9,20 @@ This is some content to go at the top of this example, lets put some content her
 *   slave
 *   common
 
-### master
+## Component Attributes
+### Component: master
 
-#### Attributes  
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ------ |
 
-### slave
+### Component: slave
 
-#### Attributes  
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ------ |
 | spark_master_host | string |  | 
 
-### common
+### Component: common
 
-#### Attributes  
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ------ |
 

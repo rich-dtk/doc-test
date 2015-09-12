@@ -1,0 +1,61 @@
+# {{module.name}}
+
+This cassandra module is a basic Cassandra service.  It manages both Apache Cassandra as well as DSE
+
+## ModuleDependencies
+
+{{#module.component_module_refs}}
+* {{namespace}} / {{module_name}}
+{{/module.component_module_refs}}
+
+## Assemblies
+
+{{#module.assemblies}}
+
+  ###Actions
+  {{#actions}}
+    ####{{name}}
+    **Description:**{{description}}
+    **REST Enpoint:**api/v1/srvc/<service name>/{{name}}
+    **Params:**
+    {{#params}}
+    	* {{name}} : {{description}}
+    {{/params}}
+  {{/actions}}
+
+  ###Components
+  | Name | Description |
+  | ---- | ------ |
+  {{#components}}
+  | {{name}} | {{description}}
+  {{/components}}
+  {{#components}}
+    **Links**
+    {{#links}}
+    {{name}} : {{value}}
+    {{/links}}
+  {{/components}}
+
+  ###Nodes
+
+  {{#nodes}}
+    ####{{name}}
+    #####Attributes
+    | Name | Type |
+    | ---- | ------ |
+    {{#attributes}}
+    | {{name}} | {{type}}
+    {{/attributes}}
+
+    #####Components
+    {{#components}}
+    **{{name}}**
+      **Links**
+      {{#links}}
+      {{name}} : {{value}}
+      {{/links}}
+    {{/components}}
+    
+  {{/nodes}}
+
+{{/module.assemblies}}

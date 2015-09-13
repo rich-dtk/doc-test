@@ -11,14 +11,8 @@ This is some content to go at the top of this example, lets put some content her
 ## Workflows
 
 ### Assembly Template: build-server
-* create
 
 ### Assembly Template: cluster-singledb-node
-* create-databases
-* create-cluster
-* start-gridx
-* gridx-status
-* create
 
 
 ## Component Module References

@@ -23,6 +23,19 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
     {{/params}}
   {{/actions}}
 
+  ###Components
+  | Name | Description |
+  | ---- | ------ |
+  {{#components}}
+  | {{name}} | {{description}}
+  {{/components}}
+  {{#components}}
+    **Links**
+    {{#links}}
+    {{name}} : {{value}}
+    {{/links}}
+  {{/components}}
+
   ###Nodes
 
   {{#nodes}}

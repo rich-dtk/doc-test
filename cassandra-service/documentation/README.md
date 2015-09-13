@@ -1,31 +1,156 @@
-## Service Module: dtk2244
+# dtk2244
 
-This is some content to go at the top of this example, lets put some content here...
+This cassandra module is a basic Cassandra service.  It manages both Apache Cassandra as well as DSE
 
-## Assembly Templates
-| Name | Description |
-| ---- | ------ |
-| build-server | build-server
-| cluster-singledb-node | Akka/spark cluster, single db node for cassandra, and mysql
+## ModuleDependencies
 
-## Workflows
+* akka/akka_cluster
+* bigtop/cassandra
+* bigtop/bigtop_base
+* dtk/host
+* gridx/gridx_cassandra
+* gridx/spark
+* gridx/repo_manager
+* gridx/gridx_app
+* gridx/globals
+* gridx/hiera_bigtop
+* gridx/gridx_mysql
+* puppetlabs/mysql
 
-### Assembly Template: build-server
-
-### Assembly Template: cluster-singledb-node
+## Assemblies
 
 
-## Component Module References
+  ###Actions
+    ####create
+    **Description:**build-server
+    **REST Enpoint:**api/v1/srvc/<service name>/create
+    **Params:**
 
-* akka:akka_cluster
-* bigtop:cassandra
-* bigtop:bigtop_base
-* dtk:host
-* gridx:gridx_cassandra
-* gridx:spark
-* gridx:repo_manager
-* gridx:gridx_app
-* gridx:globals
-* gridx:hiera_bigtop
-* gridx:gridx_mysql
-* puppetlabs:mysql
+  ###Nodes
+
+    ####build-server
+    #####Attributes
+    | Name | Type |
+    | ---- | ------ |
+
+    #####Components
+    **repo_manager**
+      **Links**
+    **host::dtk_hostname**
+      **Links**
+    
+
+
+  ###Actions
+    ####create-databases
+    **Description:**Akka/spark cluster, single db node for cassandra, and mysql
+    **REST Enpoint:**api/v1/srvc/<service name>/create-databases
+    **Params:**
+    ####create-cluster
+    **Description:**Akka/spark cluster, single db node for cassandra, and mysql
+    **REST Enpoint:**api/v1/srvc/<service name>/create-cluster
+    **Params:**
+    ####start-gridx
+    **Description:**Akka/spark cluster, single db node for cassandra, and mysql
+    **REST Enpoint:**api/v1/srvc/<service name>/start-gridx
+    **Params:**
+    ####gridx-status
+    **Description:**Akka/spark cluster, single db node for cassandra, and mysql
+    **REST Enpoint:**api/v1/srvc/<service name>/gridx-status
+    **Params:**
+    ####create
+    **Description:**Akka/spark cluster, single db node for cassandra, and mysql
+    **REST Enpoint:**api/v1/srvc/<service name>/create
+    **Params:**
+
+  ###Nodes
+
+    ####databases
+    #####Attributes
+    | Name | Type |
+    | ---- | ------ |
+
+    #####Components
+    **host::dtk_hostname**
+      **Links**
+    **cassandra::seed**
+      **Links**
+    **cassandra**
+      **Links**
+    **mysql::server**
+      **Links**
+    **gridx_mysql**
+      **Links**
+    **gridx_cassandra**
+      **Links**
+    
+    ####master
+    #####Attributes
+    | Name | Type |
+    | ---- | ------ |
+
+    #####Components
+    **hiera_bigtop**
+      **Links**
+    **bigtop_base**
+      **Links**
+    **spark::common**
+      **Links**
+    **spark::master**
+      **Links**
+    **spark::client**
+      **Links**
+    **gridx_app::akka_seed**
+      **Links**
+    **gridx_app::common**
+      **Links**
+    **gridx_app::cluster_coordinator**
+      **Links**
+    **gridx_app::master**
+      **Links**
+    **gridx_app::run_master**
+      **Links**
+    
+    ####dynamic-workers
+    #####Attributes
+    | Name | Type |
+    | ---- | ------ |
+
+    #####Components
+    **hiera_bigtop**
+      **Links**
+    **bigtop_base**
+      **Links**
+    **spark::common**
+      **Links**
+    **spark::worker**
+      **Links**
+    **gridx_app::common**
+      **Links**
+    **gridx_app::akka_actor[dynamic]**
+      **Links**
+    **gridx_app::run_akka_actor[dynamic]**
+      **Links**
+    
+    ####constant-workers
+    #####Attributes
+    | Name | Type |
+    | ---- | ------ |
+
+    #####Components
+    **hiera_bigtop**
+      **Links**
+    **bigtop_base**
+      **Links**
+    **spark::common**
+      **Links**
+    **spark::worker**
+      **Links**
+    **gridx_app::common**
+      **Links**
+    **gridx_app::akka_actor[constant]**
+      **Links**
+    **gridx_app::run_akka_actor[constant]**
+      **Links**
+    
+

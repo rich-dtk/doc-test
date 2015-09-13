@@ -1,26 +1,48 @@
-## Service Module: {{module.name}}
+# {{module.name}}
 
-This is some content to go at the top of this example, lets put some content here...
+This cassandra module is a basic Cassandra service.  It manages both Apache Cassandra as well as DSE
 
-## Assembly Templates
-| Name | Description |
-| ---- | ------ |
-{{#module.assemblies}}
-| {{name}} | {{description}}
-{{/module.assemblies}}
-
-## Workflows
-
-{{#module.assemblies}}
-### Assembly Template: {{name}}
-{{#workflows}}
-* {{name}}
-{{/workflows}}
-
-{{/module.assemblies}}
-
-## Component Module References
+## ModuleDependencies
 
 {{#module.component_module_refs}}
-* {{namespace}}:{{module_name}}
+* {{namespace}}/{{module_name}}
 {{/module.component_module_refs}}
+
+## Assemblies
+
+{{#module.assemblies}}
+
+  ###Actions
+  {{#actions}}
+    ####{{name}}
+    **Description:**{{description}}
+    **REST Enpoint:**api/v1/srvc/<service name>/{{name}}
+    **Params:**
+    {{#params}}
+    	* {{name}} : {{description}}
+    {{/params}}
+  {{/actions}}
+
+  ###Nodes
+
+  {{#nodes}}
+    ####{{name}}
+    #####Attributes
+    | Name | Type |
+    | ---- | ------ |
+    {{#attributes}}
+    | {{name}} | {{type}}
+    {{/attributes}}
+
+    #####Components
+    {{#components}}
+    **{{name}}**
+      **Links**
+      {{#links}}
+      {{name}} : {{value}}
+      {{/links}}
+    {{/components}}
+    
+  {{/nodes}}
+
+{{/module.assemblies}}

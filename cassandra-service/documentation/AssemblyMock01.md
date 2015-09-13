@@ -5,16 +5,16 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
 ## ModuleDependencies
 
 * akka/akka_cluster
-* bigtop/cassandra
 * bigtop/bigtop_base
+* bigtop/cassandra
 * dtk/host
-* gridx/gridx_cassandra
-* gridx/spark
-* gridx/repo_manager
-* gridx/gridx_app
-* gridx/globals
-* gridx/hiera_bigtop
 * gridx/gridx_mysql
+* gridx/gridx_cassandra
+* gridx/gridx_app
+* gridx/hiera_bigtop
+* gridx/repo_manager
+* gridx/spark
+* gridx/globals
 * puppetlabs/mysql
 
 ## Assemblies

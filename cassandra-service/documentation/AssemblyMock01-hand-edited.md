@@ -30,15 +30,10 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
 ###Nodes
 
 ####build-server
-#####Attributes
-| Name | Type |
-| ---- | ------ |
 
 #####Components
-**repo_manager**
-**Links**
-**host::dtk_hostname**
-**Links**
+* repo_manager
+* host::dtk_hostname
 
 ##cluster-singledb-node
 

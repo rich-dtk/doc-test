@@ -2,7 +2,7 @@
 
 This cassandra module is a basic Cassandra service.  It manages both Apache Cassandra as well as DSE
 
-## ModuleDependencies
+## Module Dependencies
 
 * akka/akka_cluster
 * bigtop/bigtop_base
@@ -19,6 +19,7 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
 
 ## Assemblies
 
+##build-server
 
 ###Actions
 
@@ -38,32 +39,19 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
 **Links**
 **host::dtk_hostname**
 **Links**
-    
 
+##cluster-singledb-node
 
 ###Actions
-####create-databases
-**Description:**Akka/spark cluster, single db node for cassandra, and mysql
-**REST Enpoint:**api/v1/srvc/<service name>/create-databases
-**Params:**
 
-####create-cluster
-**Description:**Akka/spark cluster, single db node for cassandra, and mysql
-**REST Enpoint:**api/v1/srvc/<service name>/create-cluster
-**Params:**
-####start-gridx
-**Description:**Akka/spark cluster, single db node for cassandra, and mysql
-**REST Enpoint:**api/v1/srvc/<service name>/start-gridx
-**Params:**
-####gridx-status
-**Description:**Akka/spark cluster, single db node for cassandra, and mysql
-**REST Enpoint:**api/v1/srvc/<service name>/gridx-status
-**Params:**
-####create
-**Description:**Akka/spark cluster, single db node for cassandra, and mysql
-**REST Enpoint:**api/v1/srvc/<service name>/create
-**Params:**
-
+|      | Description | REST Enpoint |
+| ---- | ----        | ----         |
+|create-databases|Akka/spark cluster, single db node for cassandra, and mysql|api/v1/srvc/[service name]/create-databases|
+|create-cluster|Akka/spark cluster, single db node for cassandra, and mysql|api/v1/srvc/[service name]/create-cluster|
+|start-gridx|Akka/spark cluster, single db node for cassandra, and mysql|api/v1/srvc/[service name]/start-gridx|
+|gridx-status|Akka/spark cluster, single db node for cassandra, and mysql|api/v1/srvc/[service name]/gridx-status|
+|create|Akka/spark cluster, single db node for cassandra, and mysql|api/v1/srvc/[service name]/create|
+    
 ###Nodes
 
 ####databases
@@ -153,5 +141,3 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
 **Links**
 **gridx_app::run_akka_actor[constant]**
 **Links**
-
-

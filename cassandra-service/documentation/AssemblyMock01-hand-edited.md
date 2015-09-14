@@ -22,10 +22,9 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
 
 ###Actions
 
-####create
-**Description:**build-server
-**REST Enpoint:**api/v1/srvc/<service name>/create
-**Params:**
+|      | Description | REST Enpoint |
+| ---- | ----        | ----         |
+|create| create a new build-server | api/v1/srvc/[service name]/create |
 
 ###Nodes
 

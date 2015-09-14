@@ -55,9 +55,6 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
 ###Nodes
 
 ####databases
-#####Attributes
-| Name | Type |
-| ---- | ------ |
 
 #####Components
 
@@ -69,9 +66,6 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
 * gridx_cassandra
     
 ####master
-#####Attributes
-| Name | Type |
-| ---- | ------ |
 
 #####Components
 * hiera_bigtop
@@ -86,9 +80,6 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
 * gridx_app::run_master
 
 ####dynamic-workers
-#####Attributes
-| Name | Type |
-| ---- | ------ |
 
 #####Components
 * hiera_bigtop
@@ -100,9 +91,6 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
 * gridx_app::run_akka_actor[dynamic]
 
 ####constant-workers
-#####Attributes
-| Name | Type |
-| ---- | ------ |
 
 #####Components
 * hiera_bigtop

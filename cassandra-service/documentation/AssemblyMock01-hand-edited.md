@@ -23,7 +23,7 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
 
 ###Actions
 
-|      | Description | REST Enpoint |
+|      | Description | REST Endpoint |
 | ---- | ----        | ----         |
 |create| create a new build-server | api/v1/srvc/[service name]/create |
 
@@ -44,7 +44,7 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
 
 ###Actions
 
-|      | Description | REST Enpoint |
+|      | Description | REST Endpoint |
 | ---- | ----        | ----         |
 |create-databases|Akka/spark cluster, single db node for cassandra, and mysql|api/v1/srvc/[service name]/create-databases|
 |create-cluster|Akka/spark cluster, single db node for cassandra, and mysql|api/v1/srvc/[service name]/create-cluster|
@@ -60,18 +60,13 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
 | ---- | ------ |
 
 #####Components
-**host::dtk_hostname**
-**Links**
-**cassandra::seed**
-**Links**
-**cassandra**
-**Links**
-**mysql::server**
-**Links**
-**gridx_mysql**
-**Links**
-**gridx_cassandra**
-**Links**
+
+* host::dtk_hostname
+* cassandra::seed
+* cassandra
+* mysql::server
+* gridx_mysql
+* gridx_cassandra
     
 ####master
 #####Attributes
@@ -79,26 +74,16 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
 | ---- | ------ |
 
 #####Components
-**hiera_bigtop**
-**Links**
-**bigtop_base**
-**Links**
-**spark::common**
-**Links**
-**spark::master**
-**Links**
-**spark::client**
-**Links**
-**gridx_app::akka_seed**
-**Links**
-**gridx_app::common**
-**Links**
-**gridx_app::cluster_coordinator**
-**Links**
-**gridx_app::master**
-**Links**
-**gridx_app::run_master**
-**Links**
+* hiera_bigtop
+* bigtop_base
+* spark::common
+* spark::master
+* spark::client
+* gridx_app::akka_seed
+* gridx_app::common
+* gridx_app::cluster_coordinator
+* gridx_app::master
+* gridx_app::run_master
 
 ####dynamic-workers
 #####Attributes
@@ -106,20 +91,13 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
 | ---- | ------ |
 
 #####Components
-**hiera_bigtop**
-**Links**
-**bigtop_base**
-**Links**
-**spark::common**
-**Links**
-**spark::worker**
-**Links**
-**gridx_app::common**
-**Links**
-**gridx_app::akka_actor[dynamic]**
-**Links**
-**gridx_app::run_akka_actor[dynamic]**
-**Links**
+* hiera_bigtop
+* bigtop_base
+* spark::common
+* spark::worker
+* gridx_app::common
+* gridx_app::akka_actor[dynamic]
+* gridx_app::run_akka_actor[dynamic]
 
 ####constant-workers
 #####Attributes
@@ -127,17 +105,10 @@ This cassandra module is a basic Cassandra service.  It manages both Apache Cass
 | ---- | ------ |
 
 #####Components
-**hiera_bigtop**
-**Links**
-**bigtop_base**
-**Links**
-**spark::common**
-**Links**
-**spark::worker**
-**Links**
-**gridx_app::common**
-**Links**
-**gridx_app::akka_actor[constant]**
-**Links**
-**gridx_app::run_akka_actor[constant]**
-**Links**
+* hiera_bigtop
+* bigtop_base
+* spark::common
+* spark::worker
+* gridx_app::common
+* gridx_app::akka_actor[constant]
+* gridx_app::run_akka_actor[constant]
